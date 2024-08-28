@@ -9,6 +9,8 @@ WORKDIR /usr/src/app
 # dependencies (better layer caching)
 COPY package*.json ./
 
+
+
 FROM base as dev
 
 RUN --mount=type=cache,target=/usr/src/app/.npm \
@@ -19,8 +21,9 @@ COPY . .
 
 CMD ["npm", "run", "dev"]
 
-FROM base as production
 
+
+FROM base as production
 # Set NODE_ENV
 ENV NODE_ENV production
 
